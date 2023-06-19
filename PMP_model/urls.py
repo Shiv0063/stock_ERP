@@ -66,7 +66,7 @@ urlpatterns = [
     # login view
     path('login', LoginView.as_view(template_name='admin/signin.html'),name='login'),
     # logout view
-    path('logout', LogoutView.as_view(),name='logout'),
+    path('logout', LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL),name='logout'),
     # signin view
     path('signin',LoginView.as_view(template_name='log.html'),name='signin'),
 
