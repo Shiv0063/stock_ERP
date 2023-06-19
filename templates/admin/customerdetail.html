@@ -1,0 +1,108 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 pb-0">
+  <div class="position-relative container-fluid px-0">
+    <div class="row align-items-center position-relative">
+      <div class="col-md-8 mb-4 mb-md-0">
+        <h3 class="mb-2">Customer Detail</h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Customer</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!--//Page Toolbar End//-->
+
+<!--//Page content//-->
+<div class="content p-4 pb-0 d-flex flex-column-fluid">
+  <div class="container-fluid px-0">
+    <div class="row">
+      <div class="col-md-5 col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex align-items-center px-4">
+                <a class="flex-grow-1 text-reset d-block overflow-hidden" href="#!">
+                  <h6 class="mb-0 text-truncate">Name</h6>
+                  <small class="text-muted">{{data.name}}</small>
+                </a>
+              </li>
+              <li class="list-group-item d-flex align-items-center px-4">
+                <a class="flex-grow-1 text-reset d-block overflow-hidden" href="#!">
+                  <h6 class="mb-0 text-truncate">Phone No.</h6>
+                  <small class="text-muted">{{data.Phone_no}}</small>
+                </a>
+              </li>
+              <li class="list-group-item d-flex align-items-center px-4">
+                <a class="flex-grow-1 text-reset d-block overflow-hidden" href="#!">
+                  <h6 class="mb-0 text-truncate">Village</h6>
+                  <small class="text-muted">{{data.village}}</small>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 col-md-7">
+        <div class="card mb-4">
+          <div class="content p-4 d-flex flex-column-fluid">
+            <div class="container-fluid px-0">
+              <div class="row">
+                <div class="col-12">
+                  <div class="" id=''>
+                    <div class="table-responsive">
+                      <table class="table mt-0 table-striped table-card table-nowrap">
+                        <thead class="text-uppercase small text-muted">
+                          <tr>
+                            <th>Date</th>
+                            <th>name</th>
+                            <th>Product</th>
+                            <th>Rate</th>
+                            <th>Weight</th>
+                            <th>Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for i in pur %}
+                          {% if i.seller_name == data.name %}
+                          <tr>
+                            <td>{{i.datepurchas}}</td>
+                            <td>{{i.seller_name}}</td>
+                            <td>{{i.product_name}}</td>
+                            <td>{{i.rate}}</td>
+                            <td>{{i.w_amount}} {{i.weight}}</td>
+                            <td>{{i.amount}}</td>
+                          </tr>
+                          {% endif %}
+                          {% endfor %}
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><b>Total Amount</b></td>
+                            <td>{{ttl}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--//Page content End//-->
+
+{% endblock content %}

@@ -1,0 +1,117 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Daily Data</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                        <li class="breadcrumb-item active">Daily Data</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/Dailystatus" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page Toolbar End//-->
+{% if pse == 0 %}
+ <!--//Page content//-->
+ <div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" id=''>
+                    <div class="table-responsive">
+                        <table class="table mt-0 table-striped table-card table-nowrap">
+                            <thead class="text-uppercase small text-muted">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>bkAmount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in entry %}
+                                <tr>
+                                    <td>{{i.date}} ( {{i.daydaily}} )</td>
+                                    <td>{{i.name}}</td>
+                                    <td>{% if i.status == 0 %} Purchase {% elif i.status == 2 %} Credit {% elif i.status == 3 %} Withdraw  {% else %} Expenses {% endif %}</td>
+                                    
+                                    <td>{{i.amount}}</td>
+                                    <td>{{i.bkamount}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Current Amount</b></td>
+                                    <td>{{cur}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--//Page content End//-->
+{% else %}
+ <!--//Page content//-->
+ <div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" id=''>
+                    <div class="table-responsive">
+                        <table class="table mt-0 table-striped table-card table-nowrap">
+                            <thead class="text-uppercase small text-muted">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>bkAmount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in entry %}
+                                <tr>
+                                    <td>{{i.date}} ( {{i.daydaily}} )</td>
+                                    <td>{{i.name}}</td>
+                                    <td>{% if i.status == 0 %} Purchase {% elif i.status == 2 %} Credit {% else %} Expenses {% endif %}</td>
+                                    <td>{{i.amount}}</td>
+                                    <td>{{i.bkamount}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Current Amount</b></td>
+                                    <td>{{cur}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--//Page content End//-->
+{% endif %}
+{% endblock content %}

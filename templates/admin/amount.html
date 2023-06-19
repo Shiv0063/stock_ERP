@@ -1,0 +1,182 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Amount</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Amount</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="row justify-content-center">
+    <div class="col-6 mt-1 mb=1 alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% for message in messages %}
+{% if message.tags == 'error' %}
+<div class="row justify-content-center">
+    <div class="col-6 mt-1 mb=1 alert alert-info alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+<!--//Page content//-->
+<div class="content p-4 pb-0 d-flex flex-column-fluid position-relative">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <!--//Card start//-->
+                <div class="card overflow-hidden">
+                  <div class="card-body d-flex align-items-center justify-content-between">
+                    <div
+                      class="flex-shrink-0 size-60  text-primary rounded-pill me-3 d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-rupee fs-4"></i>
+                    </div>
+                    <div class="flex-grow-1 text-start">
+                      <h5 class="fs-3 mb-1">
+                        {{c_amount}}
+                      </h5>
+                      <h6 class="mb-0 fw-normal">Current Amount</h6>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <!--//Card start//-->
+                <div class="card overflow-hidden">
+                  <div class="card-body d-flex align-items-center justify-content-between" data-bs-toggle="modal"
+                  data-bs-target="#examplescrolling">
+                        <div
+                      class="flex-shrink-0 size-60  text-success rounded-pill me-3 d-flex align-items-center justify-content-center">
+                      <i class="bi bi-plus fs-4"></i>
+                    </div>
+                    <div class="flex-grow-1 text-start">
+                      <h6 class="mb-0 fw-normal"><a>Add Amount</a></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <!--//Card start//-->
+                <a class="card overflow-hidden" href="/AllAmount">
+                  <div class="card-body d-flex align-items-center justify-content-between">
+                    <div
+                      class="flex-shrink-0 size-60  text-info rounded-pill me-3 d-flex align-items-center justify-content-center">
+                      <i class="bi bi-list fs-4"></i>
+                    </div>
+                    <div class="flex-grow-1 text-start">
+                        <h6 class="mb-0 fw-normal">Show All Amount</h6>
+                      </div>
+                  </div>
+                </a>
+              </div>
+              {% if c_amount > 0 %}
+              <div class="col-md-6 col-lg-3 mb-4">
+
+                <!--//Card start//-->
+                <div class="card overflow-hidden">
+                  <div class="card-body d-flex align-items-center justify-content-between" data-bs-toggle="modal" href="#exampleModalToggle"
+                  role="button">
+                    <div
+                      class="flex-shrink-0 size-60  text-danger rounded-pill me-3 d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cloud-download fs-4"></i>
+                    </div>
+                    <div class="flex-grow-1 text-start">
+                        <h6 class="mb-0 fw-normal"><a>Amount withdraw</a></h6>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalToggleLabel">For Conformtion
+                                        </h5>
+                                        <button type="button" class="btn-close"
+                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you conform to withdraw amount.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/amout0" class="btn btn-primary">Yes.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+
+
+<!--//Page content//-->
+<div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div class=" overflow-hidden">
+                    <div class="card-body">
+                        <div class="modal fade" id="examplescrolling" tabindex="-1"
+                            aria-labelledby="examplescrollingLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="examplescrollingLabel">Add Amount</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form method="post" class="p-3" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row mb-4 mt-2">
+                                            <label class="col-md-4 text-md-end" for="BlogDate">To'days Amount :</label>
+                                            <div class="col-md-8 col-lg-6">
+                                                <div>
+                                                <input type="number" class="form-control" name="amount">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+{% endblock content %}

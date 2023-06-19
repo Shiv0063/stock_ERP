@@ -1,0 +1,116 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Products</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Products</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/products" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="row justify-content-center">
+    <div class="col-6 mt-1 mb=1 alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+<!--//Page content//-->
+<div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table id="example" class="table mt-0 table-striped table-card table-nowrap">
+                            <thead class="text-uppercase small text-muted">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Details</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in data %}
+                                {% if i.status == 0 %}
+                                <tr>
+                                    <td>{{i.name}}</td>
+                                    <td><img src="{{i.image}}" class="img-fluid" alt="{{i.image}}" width="100"></td>
+                                    <td><a href="prodDetails/{{i.id}}" class="btn btn-success">Details</a></td>
+                                    <td><a href="deleteprod/{{i.id}}" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+
+<!--//Page content//-->
+<div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div class=" overflow-hidden">
+                    <div class="card-body">
+                        <div class="modal fade" id="examplescrolling" tabindex="-1"
+                            aria-labelledby="examplescrollingLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="examplescrollingLabel">Add Product</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form method="post" class="p-3" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row mb-4 mt-2">
+                                            <label class="col-md-4 text-md-end" for="BlogDate">Name :</label>
+                                            <div class="col-md-8 col-lg-6">
+                                                <div>
+                                                    <input type="text" class="form-control" placeholder='Name'
+                                                        name="name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+{% endblock content %}

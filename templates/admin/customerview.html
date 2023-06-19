@@ -1,0 +1,76 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Customers</h3>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Customers</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/Customers" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% for message in messages %}
+{% if message.tags == 'error' %}
+<div class="row justify-content-center">
+    <div class="col-6 mt-1 mb=1 alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+<!--//Page content//-->
+<div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table id="example" class="table mt-0 table-striped table-card table-nowrap">
+                            <thead class="text-uppercase small text-muted">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone No.</th>
+                                    <th>Village</th>
+                                    <th>Details</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in data %}
+                                {% if i.status == 0%}
+                                <tr>
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.Phone_no}}</td>
+                                    <td>{{i.village}}</td>
+                                    <td><a href="Details/{{i.id}}" class="btn btn-success">Details</a></td>
+                                    <td><a href="customerdelete/{{i.id}}" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+
+{% endblock content %}

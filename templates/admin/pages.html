@@ -1,0 +1,95 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Pages</h3>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                        <li class="breadcrumb-item active">Pages</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page Toolbar End//-->
+
+          <!--//Page content//-->
+          <div class="content pb-0 p-4 d-flex flex-column-fluid">
+            <div class="container-fluid px-0">
+                <div class="row mb-5">
+                  <div class="col-md-6 col-lg-3 mb-4">
+                    <!--//Card start//-->
+                    <a href="/mainpage" class="card text-white overflow-hidden">
+                      <div class="card-body">
+                        <i class="bi bi-person-circle fs-5 me-2"></i>
+                        <span class="fs-3 mb-1">
+                          Main Page
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+                      <!--//Card start//-->
+                      <a href="/categories" class="card bg-primary border-primary text-white overflow-hidden">
+                        <div class="card-body">
+                          <i class="bi bi-list fs-5 me-2"></i>
+                          <span class="fs-3 mb-1">
+                            Categories
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-4">
+
+                      <!--//Card start//-->
+                      <a href="/eabout" class="card bg-primary-subtle text-white border-0 overflow-hidden">
+                        <div class="card-body">
+                          <i class="bi bi-person-circle fs-5 me-2"></i>
+                          <span class="fs-3 mb-1">
+                            About Us
+                          </span>    
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+    
+                      <!--//Card start//-->
+                      <div class="card overflow-hidden">
+                        <div class="card-body">
+                          <i class="bi bi-person-circle fs-5 me-2"></i>
+                          <span class="fs-3 mb-1">
+                            8475
+                          </span>
+                          <h6 class="mb-0 mt-2">New customers</h6>
+    
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4">
+    
+                      <!--//Card start//-->
+                      <div class="card bg-danger border-danger text-white overflow-hidden">
+                        <div class="card-body">
+                          <i class="bi bi-person-circle fs-5 me-2"></i>
+                          <span class="fs-3 mb-1">
+                            8475
+                          </span>
+                          <h6 class="mb-0 mt-2">New customers</h6>
+    
+                        </div>
+                      </div>
+                    </div>
+                  
+                  </div>
+            </div>
+          </div>
+          <!--//Page content End//-->
+{% endblock content %}

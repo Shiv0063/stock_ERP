@@ -1,0 +1,72 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">data</h3>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                        <li class="breadcrumb-item active">data</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page Toolbar End//-->
+ <!--//Page content//-->
+ <div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" id=''>
+                    <div class="table-responsive">
+                        <table class="table mt-0 table-striped table-card table-nowrap">
+                            <thead class="text-uppercase small text-muted">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Product</th>
+                                    <th>Rate</th>
+                                    <th>Weight Amount</th>
+                                    <th>Weight</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in entry %}
+                                <tr>
+                                    <td>{{i.datepurchas}}</td>
+                                    <td>{{i.seller_name}}</td>
+                                    <td>{{i.product_name}}</td>
+                                    <td>{{i.rate}}</td>
+                                    <td>{{i.w_amount}}</td>
+                                    <td>{{i.weight}}</td>
+                                    <td>{{i.amount}}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Total Amount</b></td>
+                                    <td>{{ttl}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--//Page content End//-->
+{% endblock content %}

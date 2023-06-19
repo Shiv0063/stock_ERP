@@ -1,0 +1,179 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Search</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Search</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page Toolbar End//-->
+<!--//Page content//-->
+<div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="sticky-top top-0">
+
+                    <!--Search form-->
+                    <div class="pb-5">
+                        <form class="position-relative" action="Search" method="post">
+                            <!--Icon-->
+                            {% csrf_token %}
+                            <span
+                                class="d-flex size-20 rounded-circle ms-3 align-items-center justify-content-center position-absolute start-0 top-50 translate-middle-y">
+                                <i class="bi bi-search opacity-50"></i>
+                            </span>
+                            <!--Input-->
+                            <input type="text"
+                            name="sd"
+                                class="form-control shadow py-3 form-control-lg ps-5"
+                                placeholder="{{sd}}">
+                        </form>
+                    </div>
+                </div>
+                <div class="content p-4 d-flex flex-column-fluid">
+                    <div class="container-fluid px-0">
+                        <div class="row">
+                            {% if cust %}
+                            <div class="col-12 mb-2">
+                                <div class="card">
+                                    <h3 class="card-header">Customers</h3>
+                                    <div class="table-responsive">
+                                        <table class="table mt-0 table-striped table-card table-nowrap">
+                                            <thead class="text-uppercase small text-muted">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Phone No.</th>
+                                                    <th>Village</th>
+                                                    <th>Details</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in cust %}
+                                                {% if i.status == 0%}
+                                                <tr>
+                                                    <td>{{i.name}}</td>
+                                                    <td>{{i.Phone_no}}</td>
+                                                    <td>{{i.village}}</td>
+                                                    <td><a href="Details/{{i.id}}" class="btn btn-success">Details</a></td>
+                                                    <td><a href="customerdelete/{{i.id}}" class="btn btn-danger">Delete</a></td>
+                                                </tr>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if pur %}
+                            <div class="col-12 mt-2 mb-2">
+                                <div class="card" id=''>
+                                    <h3 class="card-header">Purchase</h3>
+                                    <div class="table-responsive">
+                                        <table class="table mt-0 table-striped table-card table-nowrap">
+                                            <thead class="text-uppercase small text-muted">
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Name</th>
+                                                    <th>Product</th>
+                                                    <th>Rate</th>
+                                                    <th>Weight</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in pur %}
+                                                <tr>
+                                                    <td>{{i.datepurchas}}</td>
+                                                    <td>{{i.seller_name}}</td>
+                                                    <td>{{i.product_name}}</td>
+                                                    <td>{{i.rate}}</td>
+                                                    <td>{{i.w_amount}} {{i.weight}}</td>
+                                                    <td>{{i.amount}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th><b>Total Amount</b></th>
+                                                    <th>{{ttl}}</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if sal %}
+                            <div class="col-12 mt-2 mb-2">
+                                <div class="card" id=''>
+                                    <h3 class="card-header">Sales</h3>
+                                    <div class="table-responsive">
+                                        <table class="table mt-0 table-striped table-card table-nowrap">
+                                            <thead class="text-uppercase small text-muted">
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Name</th>
+                                                    <th>Product</th>
+                                                    <th>Rate</th>
+                                                    <th>Weight</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in sal %}
+                                                <tr>
+                                                    <td>{{i.datesales}}</td>
+                                                    <td>{{i.purchaser_name}}</td>
+                                                    <td>{{i.product_name}}</td>
+                                                    <td>{{i.rate}}</td>
+                                                    <td>{{i.w_amount}} {{i.weight}}</td>
+                                                    <td>{{i.amount}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><b>Total Amount</b></td>
+                                                    <td>{{ttl}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+{% endblock content %}

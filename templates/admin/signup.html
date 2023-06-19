@@ -1,0 +1,180 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup</title>
+
+        <!--Font awesome icons-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <!--Google web fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" id="switchThemeStyle">
+    </head>
+    <body>
+<!--Theme mode switcher-->
+<div class="position-absolute size-40 me-2 mt-2 end-0 top-0 z-fixed">
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary size-35 fs-5 d-flex align-items-center justify-content-center p-0"
+        id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+        <span class="bi my-1 theme-icon-active"><i class="bi bi-sun"></i></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+        <li class="mb-1">
+          <button type="button" class="dropdown-item d-flex align-items-center active"
+            data-bs-theme-value="light">
+            <span class="bi me-2 theme-icon"><i class="bi bi-sun"></i></svg>
+              Light
+          </button>
+        </li>
+        <li class="mb-1">
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+            <span class="bi me-2 theme-icon"><i class="bi bi-moon"></i></span>
+            Dark
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto">
+            <span class="bi me-2 theme-icon"><i class="bi bi-circle-half"></i></span>
+            Auto
+
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+          <!--////////////////// PreLoader Start//////////////////////-->
+          <div class="loader">
+            <!--Placeholder animated layout for preloader-->
+            <div class="d-flex flex-column flex-root">
+              <div class="page d-flex flex-row flex-column-fluid">
+                <div class="page-content ps-0 ms-0 d-flex flex-column flex-row-fluid">
+                  <div
+                    class="content flex-column p-4 pb-0 d-flex justify-content-center align-items-center flex-column-fluid position-relative">
+                    <div class="w-100 h-100 position-relative d-flex align-items-center justify-content-center">
+                      <div class="spinner-border me-3 text-primary" role="status">
+                      </div> 
+                      <div>
+                      <span>Loading...</span>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--////////////////// /.PreLoader END//////////////////////-->
+
+        <div class="d-flex flex-column flex-root">
+            <!--Page-->
+            <div class="page d-flex flex-row flex-column-fluid">
+                
+                <!--///////////Page content wrapper///////////////-->
+                <main class="page-content overflow-hidden ms-0 d-flex flex-column flex-row-fluid">
+
+                    <!--//content//-->
+                    <div class="content p-1 d-flex flex-column-fluid position-relative">
+                        <div class="container py-4">
+                            <div class="row align-items-center justify-content-center mt-3">
+                                <div class="col-md-8 col-lg-5 col-xl-4">
+                                    <!--Logo-->
+                                    <a href="index.html"
+                                        class="d-flex position-relative mb-4 z-1 align-items-center justify-content-center">
+                                        <span class="sidebar-icon size-60 bg-primary text-white rounded-circle">
+                                            <svg width="16" height="18" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.399994" width="4" height="12" fill="white"/>
+                                                <path d="M5.89998 9.6C7.1465 9.6 8.34196 9.09429 9.22338 8.19411C10.1048 7.29394 10.6 6.07304 10.6 4.8C10.6 3.52696 10.1048 2.30606 9.22338 1.40589C8.34196 0.505713 7.1465 2.4787e-07 5.89998 0L5.89998 4.8L5.89998 9.6Z" fill="white"/>
+                                                </svg> 
+                                        </span>
+                                    </a>
+
+                                     <!--Card-->
+                                     <div class="card card-body bg-transparent p-4">
+                                      <h4 class="text-center">Create Account</h4>
+                                      <p class="mb-4 text-center text-muted">
+                                          To get started, Please signup with details
+                                      </p>
+                                      <form method="post" class="z-1 position-relative needs-validation" novalidate="">
+                                        {% csrf_token %}  
+                                        <div class="form-floating mb-3">
+                                              <input type="text" class="form-control" required=""
+                                                  id="floatingInputName" name="fname" placeholder="First Name">
+                                              <label for="floatingInputName">First Name</label>
+                                              <span class="invalid-feedback">Please enter your First name</span>
+                                          </div>
+                                          <div class="form-floating mb-3">
+                                              <input type="text" class="form-control" required=""
+                                                  id="floatingInputName" name="lname" placeholder="Last Name">
+                                              <label for="floatingInputName">Last Name</label>
+                                              <span class="invalid-feedback">Please enter your Last name</span>
+                                          </div>
+                                          <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" required=""
+                                                id="floatingInputnumber" name="phone_no" placeholder="number">
+                                            <label for="floatingInputnumber">Phone No.</label>
+                                            <span class="invalid-feedback">Please enter your Phone No.</span>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                          <input type="text" class="form-control" required=""
+                                              id="floatingInputName" name="uname" placeholder="Last Name">
+                                          <label for="floatingInputName">Username</label>
+                                          <span class="invalid-feedback">Please enter your Username</span>
+                                      </div>
+                                          <div class="form-floating mb-3">
+                                              <input type="password" name="pword" required="" class="form-control"
+                                                  id="floatingPassword" placeholder="Password">
+                                              <label for="floatingPassword">Password</label>
+                                              <span class="invalid-feedback">Enter the password</span>
+                                          </div>
+                                          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+                                          <hr class="mt-4">
+                                          <p class="text-muted text-center">
+                                              Alread have an account? <a href="/login"
+                                                  class="ms-1">Sign In</a>
+                                          </p>
+                                      </form>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <style>
+          input {
+            margin-top:7px;
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: .875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--bs-body-color);
+            background-color: var(--bs-form-control-bg);
+            background-clip: padding-box;
+            border: var(--bs-border-width) solid var(--bs-border-color-translucent);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .375rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+        }
+        </style>
+
+        <!--////////////Theme Core scripts Start/////////////////-->
+
+        <script src="{% static 'assets/js/theme.bundle.js' %}"></script>
+        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <!--////////////Theme Core scripts End/////////////////-->
+
+    </body>
+
+</html>

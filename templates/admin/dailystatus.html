@@ -1,0 +1,63 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+{% load widget_tweaks %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Daily Data</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                        <li class="breadcrumb-item active">Daily Data</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page Toolbar End//-->
+<!--//Page content//-->
+<div class="content p-4 pb-0 d-flex flex-column-fluid position-relative">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <!--//Card start//-->
+                <div class="card overflow-hidden">
+                    <a href="/DailystatusP_E" class="card-body d-flex align-items-center justify-content-between">
+                        <div
+                            class="flex-shrink-0 size-60  text-success rounded-pill me-3 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-arrow-down fs-4"></i>
+                        </div>
+                        <div class="flex-grow-1 text-start">
+                            <h6 class="mb-0 fw-normal">Purchase & Expenses</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <!--//Card start//-->
+                <div class="card overflow-hidden">
+                    <a href="/DailystatusS" class="card-body d-flex align-items-center justify-content-between">
+                        <div
+                            class="flex-shrink-0 size-60 text-info rounded-pill me-3 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-arrow-up fs-4"></i>
+                        </div>
+                        <div class="flex-grow-1 text-start">
+                            <h6 class="mb-0 fw-normal">Sales</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Page content End//-->
+{% endblock content %}

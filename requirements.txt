@@ -1,0 +1,10 @@
+asgiref==3.6.0
+dj-database-url==2.0.0
+dj-user-login-history==1.0.5
+Django==4.2
+django-environ==0.10.0
+django-widget-tweaks==1.4.12
+gunicorn==20.1.0
+psycopg2-binary==2.9.6
+sqlparse==0.4.4
+tzdata==2023.3

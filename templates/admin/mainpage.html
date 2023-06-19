@@ -1,0 +1,68 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Pages</h3>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                        <li class="breadcrumb-item "><a href="/pages">Pages</a></li>
+                        <li class="breadcrumb-item active">Main Page</li>
+                        
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!--//Page content//-->
+ <div class="content p-4 pb-0 d-flex flex-column-fluid">
+  <div class="container-fluid px-0">
+      <div class="row justify-content-center">
+           <!--Col-->
+          <div class="col-12 col-md-9 mb-4">
+              <div class="card h-100">
+                  <div class="card-header">
+                      <h4 class="mb-1">Main Page Data</h4>
+                  </div>
+                  <div class="card-body">
+                    <form method="post" action="" class="p-3">
+                      {% csrf_token %}
+                      <div class="row mb-4 mt-2">
+                          <label class="col-md-4 text-md-end">Phone No.:</label>
+                          <div class="col-md-8 col-lg-6">
+                            <div>
+                              <input name="number" type="number"
+                                  value="" class="form-control" >
+                          </div>
+                              </div>
+                      </div>
+                      <div class="row mb-4">
+                          <label class="col-md-4 text-md-end" for="lastname">Gmail Id:</label>
+                          <div class="col-md-8 col-lg-6">
+                              <div>
+                                  <input name="" type="Gmail"
+                                      value="" class="form-control">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                        <a class="btn btn-secondary" href="/pages">Close</a>
+                        <button type="submit" class="btn btn-primary">Update Now</button>
+                    </div>
+                  </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--//Page content End//-->
+
+{% endblock content %}
