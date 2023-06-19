@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "mng",
-    'PMP_model'
+    'PMP_model',
     'widget_tweaks',
     'dglog',
 ]
