@@ -28,6 +28,22 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# web accessible folder
+STATIC_ROOT = 'PMP_model/static/'
+
+# URL prefix for static files.
+STATIC_URL = '/static/'
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # location of your application, should not be public web accessible 
+    'static',
+)
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
