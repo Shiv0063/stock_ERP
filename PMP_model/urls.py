@@ -70,7 +70,7 @@ urlpatterns = [
     # signin view
     path('signin',LoginView.as_view(template_name='log.html'),name='signin'),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404='mng.views.error_404_view'
 
